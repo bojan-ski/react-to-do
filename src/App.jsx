@@ -1,16 +1,19 @@
+import { AppProvider } from "./context"
 import Header from "./components/Header"
 import ToDoForm from "./components/ToDoForm"
 
-const App = () => {  
+const App = () => {
   return (
-    <>
-      <Header/>
-      <ToDoForm/>
+    <AppProvider>
+      <>
+        <Header />
+        <ToDoForm />
 
-      <div className="container">
-        content
-      </div>
-    </>
+        <div className="container">
+          content
+        </div>
+      </>
+    </AppProvider>
   )
 }
 

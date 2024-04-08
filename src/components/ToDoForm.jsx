@@ -1,22 +1,19 @@
-import { useState } from "react";
+import { useGlobalContext } from "../context";
 
 const ToDoForm = () => {
-    const [newToDo, setNewToDo] = useState({})
-    const [toDoList, setToDoList] = useState([])
+    const { newToDo, setNewToDo, setToDoList } = useGlobalContext()
 
     const handleInput = (e) => {
-        setNewToDo({...newToDo, [e.target.name]: e.target.value})
-      }
+        setNewToDo({ ...newToDo, [e.target.name]: e.target.value })
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
+        const id = crypto.randomUUID()
 
-        setToDoList( curToDoList => [...curToDoList, newToDo])
+        setToDoList(curToDoList => [...curToDoList, { id, ...newToDo }])
         e.currentTarget.reset()
     }
-
-    console.log(newToDo);
-    console.log(toDoList);
 
     return (
         <section className="add-to-do">
@@ -49,7 +46,8 @@ const ToDoForm = () => {
                     <input type="date" className="form-control" name="toDoDate" id="toDoDate" onInput={handleInput} />
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                {/* submit btn */}
+                <button type="submit" className="btn">
                     Submit
                 </button>
             </form>
