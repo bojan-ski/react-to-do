@@ -7,7 +7,7 @@ export const AppProvider = ({children}) => {
     const [toDoList, setToDoList] = useState([])
 
     // console.log(newToDo);
-    console.log(toDoList);
+    // console.log(toDoList);
 
     return <AppContext.Provider value={{newToDo, setNewToDo, toDoList, setToDoList}}>
         {children}

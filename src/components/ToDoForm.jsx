@@ -16,7 +16,7 @@ const ToDoForm = () => {
     }
 
     return (
-        <section className="add-to-do">
+        <div className="add-to-do">
             <h2 className="section-title">
                 Please add a new To Do
             </h2>
@@ -51,7 +51,7 @@ const ToDoForm = () => {
                     Submit
                 </button>
             </form>
-        </section>
+        </div>
     )
 }
 
