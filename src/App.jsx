@@ -10,10 +10,10 @@ const App = () => {
       <>
         <Header />
         <ToDoForm />
-
+        
         <div className="container">
-          <ActiveToDos/>
-          <CompletedToDos/>
+          <ActiveToDos />
+          <CompletedToDos />
         </div>
       </>
     </AppProvider>
