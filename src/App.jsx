@@ -1,8 +1,15 @@
-function App() {
-  
+import Header from "./components/Header"
+import ToDoForm from "./components/ToDoForm"
+
+const App = () => {  
   return (
     <>
-      <h1>Hello World</h1>
+      <Header/>
+      <ToDoForm/>
+
+      <div className="container">
+        content
+      </div>
     </>
   )
 }
