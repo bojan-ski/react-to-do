@@ -6,7 +6,7 @@ export const AppProvider = ({children}) => {
     const [newToDo, setNewToDo] = useState({})
     const [toDoList, setToDoList] = useState([])
     // console.log(newToDo);
-    console.log(toDoList);
+    // console.log(toDoList);
 
     const handleToDoCompleted = (id) => {
         setToDoList(curToDos => curToDos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
