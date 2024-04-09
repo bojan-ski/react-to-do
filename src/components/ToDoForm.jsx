@@ -12,8 +12,10 @@ const ToDoForm = () => {
     const handleSubmit = e => {
         e.preventDefault()
         const id = crypto.randomUUID()
+        const isCompleted = false
 
-        setToDoList(curToDoList => [...curToDoList, { id, ...newToDo }])
+        setToDoList(curToDoList => [...curToDoList, { id, ...newToDo, isCompleted }])
+        setNewToDo({})
         e.currentTarget.reset()
     }
 
@@ -66,7 +68,7 @@ const ToDoForm = () => {
 
                 {/* submit btn */}
                 <button type="submit" className="btn">
-                    Submit
+                    Add New To Do
                 </button>
             </form>
         </div>

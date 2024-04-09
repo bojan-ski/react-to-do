@@ -1,8 +1,13 @@
 import { useGlobalContext } from "../context"
 
 const ActiveToDos = () => {
-    const { toDoList } = useGlobalContext()
+    const { toDoList, setToDoList } = useGlobalContext()
     // console.log(toDoList);
+
+    const handleDeleteToDo = (id) => {
+        const newToDoList = toDoList.filter(task => task.id !== id)
+        setToDoList(newToDoList)
+    }
 
     return (
         <section className="to-do-list active-list">
@@ -20,9 +25,11 @@ const ActiveToDos = () => {
                             <h4>
                                 {toDoTitle}
                             </h4>
-                            <p>
-                                {toDoDescription}
-                            </p>
+                            {toDoDescription && (
+                                <p>
+                                    {toDoDescription}
+                                </p>
+                            )}
                             <p>
                                 <strong>Do date:</strong> {toDoDate}
                             </p>
@@ -39,7 +46,7 @@ const ActiveToDos = () => {
                                     Edit
                                 </button>
 
-                                <button type='btn'>
+                                <button type='btn' onClick={() => handleDeleteToDo(id)}>
                                     Delete
                                 </button>
                             </div>
