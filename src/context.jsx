@@ -8,7 +8,16 @@ export const AppProvider = ({children}) => {
     // console.log(newToDo);
     console.log(toDoList);
 
-    return <AppContext.Provider value={{newToDo, setNewToDo, toDoList, setToDoList}}>
+    const handleToDoCompleted = (id) => {
+        setToDoList(curToDos => curToDos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+      }
+
+    const handleDeleteToDo = (id) => {
+        const newToDoList = toDoList.filter(task => task.id !== id)
+        setToDoList(newToDoList)
+    }
+
+    return <AppContext.Provider value={{newToDo, setNewToDo, toDoList, setToDoList, handleToDoCompleted, handleDeleteToDo}}>
         {children}
     </AppContext.Provider>
 }

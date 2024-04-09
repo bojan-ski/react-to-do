@@ -1,16 +1,16 @@
 import { useGlobalContext } from "../context"
 
 const ActiveToDos = () => {
-    const { toDoList, setToDoList } = useGlobalContext()
+    const { toDoList, setToDoList, handleToDoCompleted, handleDeleteToDo } = useGlobalContext()
 
-    const handleToDoCompleted = (id) => {
-        setToDoList(curToDos => curToDos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
-      }
+    // const handleToDoCompleted = (id) => {
+    //     setToDoList(curToDos => curToDos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+    //   }
 
-    const handleDeleteToDo = (id) => {
-        const newToDoList = toDoList.filter(task => task.id !== id)
-        setToDoList(newToDoList)
-    }
+    // const handleDeleteToDo = (id) => {
+    //     const newToDoList = toDoList.filter(task => task.id !== id)
+    //     setToDoList(newToDoList)
+    // }
 
     return (
         <section className="to-do-list active-list">
@@ -21,9 +21,9 @@ const ActiveToDos = () => {
             <div className="todos">
                 {toDoList.map(todo => {
                     // console.log(todo);
-                    const { id, toDoTitle, toDoDescription, toDoDate } = todo
+                    const { id, toDoTitle, toDoDescription, toDoDate, isCompleted } = todo
 
-                    return <div key={id} className="todo">
+                    if (!isCompleted) return <div key={id} className="todo">
                         <div className="todo-section-1">
                             <h4>
                                 {toDoTitle}
@@ -41,7 +41,7 @@ const ActiveToDos = () => {
                         <div className="todo-section-2">
                             <div className="complete">
                                 <label>To Do Completed:</label>
-                                <input type="checkbox" onChange={() => handleToDoCompleted(id)}/>
+                                <input type="checkbox" onChange={() => handleToDoCompleted(id)} />
                             </div>
 
                             <div className="btn-container">
