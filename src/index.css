@@ -55,7 +55,7 @@ p {
 }
 
 .add-to-do .form .form-row {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .add-to-do .form .form-label {
@@ -71,6 +71,7 @@ p {
   padding: 3px 5px;
   border: none;
   border-radius: 5px;
+  
 }
 
 .add-to-do .form input {
@@ -78,16 +79,11 @@ p {
 }
 
 /* to do description start */
-.add-to-do .form .form-row:nth-child(3){
-  display: none;
-}
-
-.add-to-do .form .form-row:nth-child(3).show{
-  display: block;
-}
-
-.add-to-do .form .form-row:nth-child(2) .form-label{
-  display: inline-block;
+.add-to-do .form .form-row:nth-child(2){
+  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .add-to-do .form .form-row:nth-child(2) button{
@@ -100,10 +96,16 @@ p {
   color: #fff;
 }
 
+.add-to-do .form .form-row:nth-child(3){
+  display: none;
+}
+
+.add-to-do .form .form-row:nth-child(3).show{
+  display: block;
+}
 /* to do description end */
 
-
-.add-to-do .form .btn {
+.add-to-do .form .form-btn {
   background-color: rgb(67, 67, 228);
   color: #fff;
   padding: 10px 25px;

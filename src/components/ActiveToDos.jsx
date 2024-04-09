@@ -2,7 +2,10 @@ import { useGlobalContext } from "../context"
 
 const ActiveToDos = () => {
     const { toDoList, setToDoList } = useGlobalContext()
-    // console.log(toDoList);
+
+    const handleToDoCompleted = (id) => {
+        setToDoList(curToDos => curToDos.map(todo => todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+      }
 
     const handleDeleteToDo = (id) => {
         const newToDoList = toDoList.filter(task => task.id !== id)
@@ -38,7 +41,7 @@ const ActiveToDos = () => {
                         <div className="todo-section-2">
                             <div className="complete">
                                 <label>To Do Completed:</label>
-                                <input type="checkbox" />
+                                <input type="checkbox" onChange={() => handleToDoCompleted(id)}/>
                             </div>
 
                             <div className="btn-container">

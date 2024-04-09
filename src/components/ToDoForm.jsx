@@ -67,7 +67,7 @@ const ToDoForm = () => {
                 </div>
 
                 {/* submit btn */}
-                <button type="submit" className="btn">
+                <button type="submit" className="btn form-btn">
                     Add New To Do
                 </button>
             </form>
