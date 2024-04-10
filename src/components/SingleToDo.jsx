@@ -3,7 +3,6 @@ import { useGlobalContext } from "../context"
 const SingleToDo = ({ todo }) => {
     const { id, toDoTitle, toDoDescription, toDoDate, isCompleted } = todo
     const { handleToDoCompleted, handleEditToDo, handleDeleteToDo } = useGlobalContext()
-    // console.log(isCompleted);
 
     return (
         <>
