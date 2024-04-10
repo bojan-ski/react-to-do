@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,17 +7,21 @@
 }
 
 html {
+  font-family: "Poppins", sans-serif;
   font-size: 62.5%;
 }
 
-/* General */
-.section-title {
-  font-size: 30px;
-  margin-bottom: 10px;
-  text-align: center;
-  margin-bottom: 15px;
+body {
+  background-color: #fff;
 }
 
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- GENERAL --- */
 h4 {
   text-transform: capitalize;
 }
@@ -25,7 +31,13 @@ p {
   margin-bottom: 10px;
 }
 
-.btn{
+.section-title {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.btn {
   color: #fff;
   border: none;
   border-radius: 7px;
@@ -33,30 +45,41 @@ p {
   cursor: pointer;
 }
 
+.btn:hover {
+  box-shadow: 1px 1px 5px #333;
+}
+
 .btn:active {
   transform: scale(0.95);
 }
 
+/* --- HEADER --- */
 /* Header */
 .header {
-  background-color: orange;
-  padding: 25px 0;
+  background-color: #1e90ff;
+  padding: 70px 0;
   text-align: center;
 }
 
 .header h1 {
-  font-size: 50px;
+  font-size: 70px;
+}
+
+/* --- MAIN --- */
+main{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* To Do Form */
 .add-to-do {
-  background-color: olivedrab;
-  padding: 15px;
+  background-color: #eee;
+  padding: 30px 0;
   text-align: center;
 }
 
 .add-to-do .form {
-  background-color: yellowgreen;
   padding: 15px 35px;
   margin: auto;
   width: 40%;
@@ -71,6 +94,7 @@ p {
   margin-bottom: 5px;
   text-align: start;
   font-size: 20px;
+  font-weight: 600;
 }
 
 .add-to-do .form .form-control {
@@ -79,32 +103,34 @@ p {
   padding: 3px 5px;
   border: none;
   border-radius: 5px;
-  
 }
 
 .add-to-do .form input {
-  height: 30px;
+  height: 45px;
 }
 
 /* to do description start */
-.add-to-do .form .form-row:nth-child(2){
-  background-color: aquamarine;
+.add-to-do .form .form-row:nth-child(2) {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.add-to-do .form .form-row:nth-child(2) button{
+.add-to-do .form .form-row:nth-child(2) .form-label {
+  font-weight: 400;
+}
+
+.add-to-do .form .form-row:nth-child(2) button {
   font-size: 12px;
-  padding: 2px 7px;
+  padding: 4px 10px;
   background-color: blueviolet;
 }
 
-.add-to-do .form .form-row:nth-child(3){
+.add-to-do .form .form-row:nth-child(3) {
   display: none;
 }
 
-.add-to-do .form .form-row:nth-child(3).show{
+.add-to-do .form .form-row:nth-child(3).show {
   display: block;
 }
 /* to do description end */
@@ -116,20 +142,21 @@ p {
 
 .add-to-do .form .submit-btn {
   background-color: rgb(67, 67, 228);
-  padding: 10px 25px;
+  padding: 15px 30px;
 }
 
-.add-to-do .form .update-btn{
+.add-to-do .form .update-btn {
   background-color: rgb(151, 133, 55);
-  padding: 10px 25px;
+  padding: 15px 30px;
 }
 
 /* container */
 .container {
-  background-color: bisque;
-  max-width: 1400px;
+  background-color: #eee;
+  width: 1400px; 
   margin: auto;
-  padding: 25px 30px;
+  padding: 0 30px 25px 30px;
+  flex: 1;
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -137,54 +164,63 @@ p {
 
 /* To Do List*/
 .to-do-list {
-  background-color: aquamarine;
+  background-color: #87cefa;
   width: 50%;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .todo {
-  background-color: cadetblue;
+  background-color: #fff;
   padding: 20px;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 10px;
   border-radius: 7px;
 }
 
 .todo .todo-section-1 {
-  background-color: darkgray;
   margin-bottom: 10px;
+  border-bottom: 1px solid #000;
 }
 
 .todo .todo-section-2 {
-  background-color: darkgray;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.todo .todo-section-2 label{
+.todo .todo-section-2 label {
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   margin-right: 5px;
 }
 
-.todo .todo-section-2 input{
+.todo .todo-section-2 input {
   vertical-align: middle;
   height: 20px;
   width: 20px;
 }
 
-.todo .todo-section-2 button{
+.todo .todo-section-2 button {
   background-color: rgb(67, 67, 228);
   padding: 7px 15px;
 }
 
-.todo .todo-section-2 .edit-btn{
+.todo .todo-section-2 .edit-btn {
   background-color: rgb(129, 129, 42);
 }
 
-.todo .todo-section-2 .delete-btn{
+.todo .todo-section-2 .delete-btn {
   background-color: rgb(173, 29, 29);
   margin-left: 5px;
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: #1e90ff;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
 }

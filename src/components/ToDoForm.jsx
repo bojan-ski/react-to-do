@@ -61,7 +61,7 @@ const ToDoForm = () => {
                 {/* to do description option (show/hide feature) */}
                 <div className="form-row">
                     <label htmlFor="toDoDescription" className="form-label">
-                        Show To Do description textarea:
+                        Show To Do description - textarea:
                     </label>
                     <button type="button" className="btn" onClick={() => setShowTextarea(!showTextarea)}>
                         {showTextarea ? "Hide" : "Show"}
