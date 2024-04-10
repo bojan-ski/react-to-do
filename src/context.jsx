@@ -9,9 +9,6 @@ export const AppProvider = ({ children }) => {
         todo: {},
         edit: false
     })
-    console.log(newToDo);
-    console.log(toDoList);
-    // console.log(isEditToDo);
 
     // mark a "to do" as completed
     const handleToDoCompleted = (id) => {
@@ -27,7 +24,6 @@ export const AppProvider = ({ children }) => {
     }    
 
     const updateToDoList = (id, updatedToDo) => {
-        // console.log(id, updatedToDo);
         setToDoList(toDoList.map(todo => (todo.id === id ? {...todo, ...updatedToDo} : todo)))
         setIsEditToDo({
             todo: {},

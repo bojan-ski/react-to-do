@@ -109,8 +109,18 @@ p {
 }
 /* to do description end */
 
-.add-to-do .form .form-btn {
+.add-to-do .form .submit-btn {
   background-color: rgb(67, 67, 228);
+  padding: 10px 25px;
+}
+
+.add-to-do .form .submit-btn {
+  background-color: rgb(67, 67, 228);
+  padding: 10px 25px;
+}
+
+.add-to-do .form .update-btn{
+  background-color: rgb(151, 133, 55);
   padding: 10px 25px;
 }
 

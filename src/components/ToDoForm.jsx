@@ -24,6 +24,7 @@ const ToDoForm = () => {
         updateToDoList(isEditToDo.todo.id, newToDo)
         setNewToDo({})
         clearAllFields()
+        setShowTextarea(false)
     }
 
     const handleInput = (e) => {
@@ -32,12 +33,14 @@ const ToDoForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+
         const id = crypto.randomUUID()
         const isCompleted = false
 
         setToDoList(curToDoList => [...curToDoList, { id, ...newToDo, isCompleted }])
         setNewToDo({})
         clearAllFields()
+        setShowTextarea(false)
     }
 
     return (
@@ -45,9 +48,6 @@ const ToDoForm = () => {
             <h2 className="section-title">
                 Please add a new To Do
             </h2>
-
-            {/* EDIT - PREPRAVI */}
-
 
             <form className="form" onSubmit={handleSubmit}>
                 {/* to do title */}
@@ -58,7 +58,7 @@ const ToDoForm = () => {
                     <input type="text" className="form-control" name="toDoTitle" id="toDoTitle" value={newToDo.toDoTitle} onInput={handleInput} required />
                 </div>
 
-                {/* to do description option (show/hide) */}
+                {/* to do description option (show/hide feature) */}
                 <div className="form-row">
                     <label htmlFor="toDoDescription" className="form-label">
                         Show To Do description textarea:
@@ -69,18 +69,14 @@ const ToDoForm = () => {
                 </div>
 
                 {/* to do description */}
-                <div className={showTextarea ? 'form-row show' : 'form-row'}>
+                <div className={`form-row ${showTextarea
+                    ||
+                    (isEditToDo.editToDo && isEditToDo?.todo?.toDoDescription?.length > 0) ? 'show' : ''}`}>
                     <label htmlFor="toDoDescription" className="form-label">
                         To Do Description:
                     </label>
-                    <textarea className="form-control" name="toDoDescription" id="toDoDescription" value={newToDo.toDoDescription} onInput={handleInput} rows="10"></textarea>
+                    <textarea className="form-control" name="toDoDescription" id="toDoDescription" value={newToDo.toDoDescription} onInput={handleInput} rows="10"/>
                 </div>
-                {/* <div className="form-row">
-                    <label htmlFor="toDoDescription" className="form-label">
-                        To Do Description:
-                    </label>
-                    <input type="text" className="form-control" name="toDoDescription" id="toDoDescription" onInput={handleInput} />
-                </div> */}
 
                 {/* to do date */}
                 <div className="form-row">
@@ -93,7 +89,7 @@ const ToDoForm = () => {
                 {!isEditToDo.editToDo ? (
                     <>
                         {/* add new to do - btn */}
-                        < button type="submit" className="btn form-btn">
+                        < button type="submit" className="btn submit-btn">
                             Add New To Do
                         </button>
                     </>
@@ -102,8 +98,8 @@ const ToDoForm = () => {
                     (
                         <>
                             {/* edit selected to do data - btn */}
-                            <button type="button" className="btn" onClick={editSelectedToDo}>
-                                Edit To Do
+                            <button type="button" className="btn update-btn" onClick={editSelectedToDo}>
+                                Update To Do
                             </button>
                         </>
                     )
