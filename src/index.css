@@ -25,6 +25,14 @@ p {
   margin-bottom: 10px;
 }
 
+.btn{
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .btn:active {
   transform: scale(0.95);
 }
@@ -88,12 +96,8 @@ p {
 
 .add-to-do .form .form-row:nth-child(2) button{
   font-size: 12px;
-  margin-left: 10px;
   padding: 2px 7px;
-  border: none;
-  border-radius: 5px;
   background-color: blueviolet;
-  color: #fff;
 }
 
 .add-to-do .form .form-row:nth-child(3){
@@ -107,11 +111,7 @@ p {
 
 .add-to-do .form .form-btn {
   background-color: rgb(67, 67, 228);
-  color: #fff;
   padding: 10px 25px;
-  border: none;
-  border-radius: 7px;
-  text-transform: uppercase;
 }
 
 /* container */
@@ -148,5 +148,33 @@ p {
 .todo .todo-section-2 {
   background-color: darkgray;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.todo .todo-section-2 label{
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+
+.todo .todo-section-2 input{
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+}
+
+.todo .todo-section-2 button{
+  background-color: rgb(67, 67, 228);
+  padding: 7px 15px;
+}
+
+.todo .todo-section-2 .edit-btn{
+  background-color: rgb(129, 129, 42);
+}
+
+.todo .todo-section-2 .delete-btn{
+  background-color: rgb(173, 29, 29);
+  margin-left: 5px;
 }

@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../context"
+import SectionTitle from "./SectionTitle"
 import SingleToDo from "./SingleToDo"
 
 const CompletedToDos = () => {
@@ -6,15 +7,13 @@ const CompletedToDos = () => {
 
   return (
     <section className="to-do-list completed-list">
-      <h2 className="section-title">
-        Competed To Dos
-      </h2>
+      <SectionTitle sectionTitle='Competed To Dos'/>
 
       <div className="todos">
         {toDoList.map(todo => {
           return (
             <>
-                {todo.isCompleted && (<SingleToDo todo={todo} />)}
+                {todo.isCompleted && (<SingleToDo key={todo.id} todo={todo} />)}
             </>
         )
           // const { id, toDoTitle, toDoDescription, toDoDate, isCompleted } = todo

@@ -2,12 +2,12 @@ import { useGlobalContext } from "../context"
 
 const SingleToDo = ({ todo }) => {
     const { id, toDoTitle, toDoDescription, toDoDate, isCompleted } = todo
-    const { handleToDoCompleted, handleDeleteToDo } = useGlobalContext()
+    const { handleToDoCompleted, handleEditToDo, handleDeleteToDo } = useGlobalContext()
     // console.log(isCompleted);
 
     return (
         <>
-            <div key={id} className="todo">
+            <div className="todo">
                 <div className="todo-section-1">
                     <h4>
                         {toDoTitle}
@@ -22,6 +22,7 @@ const SingleToDo = ({ todo }) => {
                     </p>
                 </div>
                 <div />
+
                 {!isCompleted ? (
                     <div className="todo-section-2">
                         <div className="complete">
@@ -30,11 +31,11 @@ const SingleToDo = ({ todo }) => {
                         </div>
 
                         <div className="btn-container">
-                            <button type='btn'>
+                            <button type="button" className='btn edit-btn' onClick={() => handleEditToDo(todo)}>
                                 Edit
                             </button>
 
-                            <button type='btn' onClick={() => handleDeleteToDo(id)}>
+                            <button type="button" className='btn delete-btn' onClick={() => handleDeleteToDo(id)}>
                                 Delete
                             </button>
                         </div>
@@ -49,7 +50,7 @@ const SingleToDo = ({ todo }) => {
                             </div>
 
                             <div className="btn-container">
-                                <button type='btn' onClick={() => handleDeleteToDo(id)}>
+                                <button type="button" className='btn delete-btn' onClick={() => handleDeleteToDo(id)}>
                                     Delete
                                 </button>
                             </div>

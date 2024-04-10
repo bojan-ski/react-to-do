@@ -1,9 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "../context";
+import { clearAllFields } from "../utils/clearFields";
 
 const ToDoForm = () => {
-    const { newToDo, setNewToDo, setToDoList } = useGlobalContext()
+    const { newToDo, setNewToDo, setToDoList, isEditToDo, updateToDoList } = useGlobalContext()
     const [showTextarea, setShowTextarea] = useState(false)
+
+    useEffect(() => {
+        if (isEditToDo.editToDo) {
+            const { id, toDoTitle, toDoDescription, toDoDate, isCompleted } = isEditToDo.todo
+
+            setNewToDo({
+                id,
+                toDoTitle,
+                toDoDescription,
+                toDoDate,
+                isCompleted
+            })
+        }
+    }, [isEditToDo])
+
+    const editSelectedToDo = () => {
+        updateToDoList(isEditToDo.todo.id, newToDo)
+        setNewToDo({})
+        clearAllFields()
+    }
 
     const handleInput = (e) => {
         setNewToDo({ ...newToDo, [e.target.name]: e.target.value })
@@ -16,7 +37,7 @@ const ToDoForm = () => {
 
         setToDoList(curToDoList => [...curToDoList, { id, ...newToDo, isCompleted }])
         setNewToDo({})
-        e.currentTarget.reset()
+        clearAllFields()
     }
 
     return (
@@ -25,13 +46,16 @@ const ToDoForm = () => {
                 Please add a new To Do
             </h2>
 
+            {/* EDIT - PREPRAVI */}
+
+
             <form className="form" onSubmit={handleSubmit}>
                 {/* to do title */}
                 <div className="form-row">
                     <label htmlFor="toDoTitle" className="form-label">
                         To Do Title:
                     </label>
-                    <input type="text" className="form-control" name="toDoTitle" id="toDoTitle" onInput={handleInput} required />
+                    <input type="text" className="form-control" name="toDoTitle" id="toDoTitle" value={newToDo.toDoTitle} onInput={handleInput} required />
                 </div>
 
                 {/* to do description option (show/hide) */}
@@ -40,7 +64,7 @@ const ToDoForm = () => {
                         Show To Do description textarea:
                     </label>
                     <button type="button" className="btn" onClick={() => setShowTextarea(!showTextarea)}>
-                        {showTextarea ? "Hide" : "Show"}                        
+                        {showTextarea ? "Hide" : "Show"}
                     </button>
                 </div>
 
@@ -49,7 +73,7 @@ const ToDoForm = () => {
                     <label htmlFor="toDoDescription" className="form-label">
                         To Do Description:
                     </label>
-                    <textarea className="form-control" name="toDoDescription" id="toDoDescription" onInput={handleInput} rows="10"></textarea>
+                    <textarea className="form-control" name="toDoDescription" id="toDoDescription" value={newToDo.toDoDescription} onInput={handleInput} rows="10"></textarea>
                 </div>
                 {/* <div className="form-row">
                     <label htmlFor="toDoDescription" className="form-label">
@@ -63,15 +87,29 @@ const ToDoForm = () => {
                     <label htmlFor="toDoDate" className="form-label">
                         To Do Date:
                     </label>
-                    <input type="date" className="form-control" name="toDoDate" id="toDoDate" onInput={handleInput} required />
+                    <input type="date" className="form-control" name="toDoDate" id="toDoDate" value={newToDo.toDoDate} onInput={handleInput} required />
                 </div>
 
-                {/* submit btn */}
-                <button type="submit" className="btn form-btn">
-                    Add New To Do
-                </button>
+                {!isEditToDo.editToDo ? (
+                    <>
+                        {/* add new to do - btn */}
+                        < button type="submit" className="btn form-btn">
+                            Add New To Do
+                        </button>
+                    </>
+                )
+                    :
+                    (
+                        <>
+                            {/* edit selected to do data - btn */}
+                            <button type="button" className="btn" onClick={editSelectedToDo}>
+                                Edit To Do
+                            </button>
+                        </>
+                    )
+                }
             </form>
-        </div>
+        </div >
     )
 }
 
